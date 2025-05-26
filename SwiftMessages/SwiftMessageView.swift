@@ -1,5 +1,5 @@
 //
-//  MessageView.swift
+//  SwiftMessageView.swift
 //  SwiftMessages
 //
 //  Created by Timothy Moose on 7/30/16.
@@ -10,7 +10,7 @@ import UIKit
 
 /*
  */
-open class MessageView: BaseView, Identifiable, AccessibleMessage, HapticMessage {
+open class SwiftMessageView: BaseView, Identifiable, AccessibleMessage, HapticMessage {
 
     /*
      MARK: - Haptic feedback
@@ -66,10 +66,10 @@ open class MessageView: BaseView, Identifiable, AccessibleMessage, HapticMessage
     @IBOutlet open var button: UIButton? {
         didSet {
             if let old = oldValue {
-                old.removeTarget(self, action: #selector(MessageView.buttonTapped(_:)), for: .touchUpInside)
+                old.removeTarget(self, action: #selector(SwiftMessageView.buttonTapped(_:)), for: .touchUpInside)
             }
             if let button = button {
-                button.addTarget(self, action: #selector(MessageView.buttonTapped(_:)), for: .touchUpInside)
+                button.addTarget(self, action: #selector(SwiftMessageView.buttonTapped(_:)), for: .touchUpInside)
             }
         }
     }
@@ -144,7 +144,7 @@ open class MessageView: BaseView, Identifiable, AccessibleMessage, HapticMessage
  bundle first. See `SwiftMessages` for additional nib loading options.
  */
 
-extension MessageView {
+extension SwiftMessageView {
     
     /**
      Specifies one of the nib files included in the Resources folders.
@@ -190,7 +190,7 @@ extension MessageView {
      
      - Returns: An instance of generic view type `T: MessageView`.
      */
-    public static func viewFromNib<T: MessageView>(layout: Layout, filesOwner: AnyObject = NSNull.init()) -> T {
+    public static func viewFromNib<T: SwiftMessageView>(layout: Layout, filesOwner: AnyObject = NSNull.init()) -> T {
         return try! SwiftMessages.viewFromNib(named: layout.rawValue)
     }
     
@@ -205,7 +205,7 @@ extension MessageView {
      
      - Returns: An instance of generic view type `T: MessageView`.
      */
-    public static func viewFromNib<T: MessageView>(layout: Layout, bundle: Bundle, filesOwner: AnyObject = NSNull.init()) -> T {
+    public static func viewFromNib<T: SwiftMessageView>(layout: Layout, bundle: Bundle, filesOwner: AnyObject = NSNull.init()) -> T {
         return try! SwiftMessages.viewFromNib(named: layout.rawValue, bundle: bundle, filesOwner: filesOwner)
     }
 }
@@ -216,7 +216,7 @@ extension MessageView {
  This extension provides a few convenience functions for adjusting the layout.
  */
 
-extension MessageView {
+extension SwiftMessageView {
     /**
      Constrains the image view to a specified size. By default, the size of the
      image view is determined by its `intrinsicContentSize`.
@@ -248,7 +248,7 @@ extension MessageView {
  if these don't exactly meet your needs.
  */
 
-extension MessageView {
+extension SwiftMessageView {
     
     /**
      A convenience function for setting some pre-defined colors and icons.
@@ -367,7 +367,7 @@ extension MessageView {
  files into your project as a starting point and make changes.
  */
 
-extension MessageView {
+extension SwiftMessageView {
     
     /**
      Sets the message body text.
